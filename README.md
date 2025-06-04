@@ -11,15 +11,21 @@ Interactive expense tracking application with monthly calculations and edit func
 - **Tech Stack**: HTML, CSS, JavaScript
 - **Features**: Expense management, monthly totals, edit/delete functionality
 
+![Task 1 - Monthly Expense Calculator](./1.png)
+
 ### [Task 2: API Testing Tool](./Task%202/README.md)
 Comprehensive API testing tool for FakeStore API with data validation and modern UI.
 - **Tech Stack**: HTML, CSS, JavaScript, PHP
 - **Features**: API requests, data validation, dark theme interface
 
+![Task 2 - API Testing Tool](./2.png)
+
 ### [Task 3: SQL Analytics Tool](./Task%203/README.md)
 Advanced SQL analytics tool with in-browser SQLite database for sales data analysis.
 - **Tech Stack**: HTML, CSS, JavaScript, SQLite.js
 - **Features**: Database queries, task validation, interactive analytics
+
+![Task 3 - SQL Analytics Tool](./3.png)
 
 ## 👨‍💻 Development Information
 
