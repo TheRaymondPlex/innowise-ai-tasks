@@ -1,0 +1,785 @@
+/* ===================================
+   SQL ANALYTICS TOOL STYLES
+   BEM Methodology - Modern Dark Theme
+   =================================== */
+
+/* CSS Variables for Theme Colors */
+:root {
+  /* Primary Colors */
+  --st-bg-primary: #0d1117;
+  --st-bg-secondary: #161b22;
+  --st-bg-tertiary: #21262d;
+  --st-bg-hover: #30363d;
+  --st-bg-active: #373e47;
+  
+  /* Text Colors */
+  --st-text-primary: #e6edf3;
+  --st-text-secondary: #7d8590;
+  --st-text-muted: #656d76;
+  
+  /* Accent Colors */
+  --st-accent-primary: #238636;
+  --st-accent-primary-hover: #2ea043;
+  --st-accent-secondary: #6366f1;
+  --st-accent-secondary-hover: #818cf8;
+  --st-accent-info: #1f6feb;
+  --st-accent-info-hover: #4493f8;
+  --st-accent-warning: #d29922;
+  --st-accent-warning-hover: #e3b341;
+  --st-accent-danger: #da3633;
+  --st-accent-danger-hover: #f85149;
+  --st-accent-success: #238636;
+  --st-accent-success-hover: #2ea043;
+  
+  /* Status Colors */
+  --st-status-online: #238636;
+  --st-status-offline: #da3633;
+  --st-status-loading: #d29922;
+  
+  /* Border Colors */
+  --st-border-default: #30363d;
+  --st-border-muted: #21262d;
+  --st-border-accent: #58a6ff;
+  
+  /* Shadow */
+  --st-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  --st-shadow-hover: 0 3px 6px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.12);
+  --st-shadow-focus: 0 0 0 2px rgba(88, 166, 255, 0.3);
+  
+  /* Border Radius */
+  --st-radius-sm: 6px;
+  --st-radius-md: 8px;
+  --st-radius-lg: 12px;
+  
+  /* Transitions */
+  --st-transition: all 0.2s ease-in-out;
+  --st-transition-fast: all 0.15s ease-in-out;
+}
+
+/* Global Styles */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--st-bg-primary);
+  color: var(--st-text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+}
+
+/* Header Styles */
+.sql-tool__header {
+  background-color: var(--st-bg-secondary);
+  border-bottom: 1px solid var(--st-border-default);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+}
+
+.sql-tool__title {
+  color: var(--st-text-primary);
+  font-size: 1.75rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sql-tool__subtitle {
+  color: var(--st-text-secondary);
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+.sql-tool__icon {
+  color: var(--st-accent-secondary);
+  font-size: 2rem;
+}
+
+/* Status Indicator */
+.sql-tool__status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--st-bg-tertiary);
+  border: 1px solid var(--st-border-default);
+  border-radius: var(--st-radius-md);
+  padding: 0.5rem 1rem;
+  transition: var(--st-transition);
+}
+
+.sql-tool__status #statusIcon {
+  font-size: 0.75rem;
+  color: var(--st-status-loading);
+}
+
+.sql-tool__status.online #statusIcon {
+  color: var(--st-status-online);
+}
+
+.sql-tool__status.offline #statusIcon {
+  color: var(--st-status-offline);
+}
+
+/* Main Content */
+.sql-tool__main {
+  min-height: calc(100vh - 200px);
+  padding: 2rem 0;
+}
+
+/* Card Styles */
+.sql-tool__card {
+  background-color: var(--st-bg-secondary);
+  border: 1px solid var(--st-border-default);
+  border-radius: var(--st-radius-lg);
+  box-shadow: var(--st-shadow);
+  transition: var(--st-transition);
+  overflow: hidden;
+}
+
+.sql-tool__card:hover {
+  box-shadow: var(--st-shadow-hover);
+}
+
+.sql-tool__card-header {
+  background-color: var(--st-bg-tertiary);
+  border-bottom: 1px solid var(--st-border-default);
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sql-tool__card-title {
+  color: var(--st-text-primary);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sql-tool__card-title i {
+  color: var(--st-accent-info);
+}
+
+.sql-tool__card-body {
+  padding: 1.5rem;
+}
+
+/* Button Styles */
+.sql-tool__btn {
+  border: none;
+  border-radius: var(--st-radius-sm);
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0.75rem 1rem;
+  text-align: center;
+  text-decoration: none;
+  transition: var(--st-transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.sql-tool__btn:focus {
+  outline: none;
+  box-shadow: var(--st-shadow-focus);
+}
+
+.sql-tool__btn--primary {
+  background-color: var(--st-accent-primary);
+  color: white;
+}
+
+.sql-tool__btn--primary:hover:not(:disabled) {
+  background-color: var(--st-accent-primary-hover);
+}
+
+.sql-tool__btn--secondary {
+  background-color: var(--st-accent-secondary);
+  color: white;
+}
+
+.sql-tool__btn--secondary:hover:not(:disabled) {
+  background-color: var(--st-accent-secondary-hover);
+}
+
+.sql-tool__btn--success {
+  background-color: var(--st-accent-success);
+  color: white;
+}
+
+.sql-tool__btn--success:hover:not(:disabled) {
+  background-color: var(--st-accent-success-hover);
+}
+
+.sql-tool__btn--outline {
+  background-color: transparent;
+  border: 1px solid var(--st-border-default);
+  color: var(--st-text-primary);
+}
+
+.sql-tool__btn--outline:hover:not(:disabled) {
+  background-color: var(--st-bg-hover);
+  border-color: var(--st-border-accent);
+}
+
+.sql-tool__btn--outline.active {
+  background-color: var(--st-accent-info);
+  border-color: var(--st-accent-info);
+  color: white;
+}
+
+.sql-tool__btn--sm {
+  font-size: 0.75rem;
+  padding: 0.5rem 0.75rem;
+}
+
+.sql-tool__btn--lg {
+  font-size: 1.125rem;
+  padding: 1rem 2rem;
+}
+
+.sql-tool__btn:disabled {
+  background-color: var(--st-bg-hover);
+  color: var(--st-text-muted);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Stats Display */
+.sql-tool__info-text {
+  color: var(--st-text-secondary);
+  margin: 0;
+}
+
+.sql-tool__stats {
+  background-color: var(--st-bg-primary);
+  border: 1px solid var(--st-border-default);
+  border-radius: var(--st-radius-md);
+  padding: 1rem;
+}
+
+.sql-tool__stat-item {
+  text-align: center;
+}
+
+.sql-tool__stat-value {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--st-text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.sql-tool__stat-label {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--st-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Form Elements */
+.sql-tool__form-label {
+  color: var(--st-text-primary);
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.sql-tool__quick-queries .btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.sql-tool__quick-queries .btn-group .sql-tool__btn {
+  flex: 1;
+  min-width: 0;
+}
+
+/* SQL Editor */
+.sql-tool__editor-container {
+  margin-top: 1rem;
+}
+
+.sql-tool__editor-wrapper {
+  position: relative;
+}
+
+.sql-tool__sql-editor {
+  background-color: var(--st-bg-primary);
+  border: 1px solid var(--st-border-default);
+  border-radius: var(--st-radius-md);
+  color: var(--st-text-primary);
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  padding: 1rem;
+  resize: vertical;
+  transition: var(--st-transition);
+  width: 100%;
+}
+
+.sql-tool__sql-editor:focus {
+  border-color: var(--st-accent-info);
+  box-shadow: var(--st-shadow-focus);
+  outline: none;
+}
+
+.sql-tool__sql-editor::placeholder {
+  color: var(--st-text-muted);
+}
+
+.sql-tool__editor-actions {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  display: flex;
+  gap: 0.25rem;
+}
+
+/* Execute Section */
+.sql-tool__execute-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.sql-tool__hint {
+  color: var(--st-text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* Task List */
+.sql-tool__task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.sql-tool__task-item {
+  background-color: var(--st-bg-primary);
+  border: 1px solid var(--st-border-default);
+  border-radius: var(--st-radius-md);
+  padding: 1rem;
+  transition: var(--st-transition);
+}
+
+.sql-tool__task-item:hover {
+  border-color: var(--st-border-accent);
+}
+
+.sql-tool__task-item.completed {
+  border-color: var(--st-accent-success);
+  background-color: rgba(35, 134, 54, 0.05);
+}
+
+.sql-tool__task-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.sql-tool__task-number {
+  background-color: var(--st-accent-info);
+  color: white;
+  border-radius: 50%;
+  width: 1.5rem;
+  height: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.sql-tool__task-title {
+  color: var(--st-text-primary);
+  font-weight: 500;
+  flex: 1;
+}
+
+.sql-tool__task-status {
+  color: var(--st-text-muted);
+}
+
+.sql-tool__task-status.completed {
+  color: var(--st-accent-success);
+}
+
+.sql-tool__task-description {
+  color: var(--st-text-secondary);
+  font-size: 0.875rem;
+  margin: 0 0 0.5rem 0;
+}
+
+.sql-tool__task-expected {
+  color: var(--st-text-muted);
+  font-size: 0.75rem;
+  font-style: italic;
+}
+
+/* Database Schema */
+.sql-tool__schema {
+  background-color: var(--st-bg-primary);
+  border: 1px solid var(--st-border-default);
+  border-radius: var(--st-radius-md);
+  padding: 1rem;
+}
+
+.sql-tool__table-name {
+  color: var(--st-text-primary);
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sql-tool__table-name i {
+  color: var(--st-accent-info);
+}
+
+.sql-tool__column-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sql-tool__column {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  background-color: var(--st-bg-secondary);
+  border-radius: var(--st-radius-sm);
+}
+
+.sql-tool__column-name {
+  color: var(--st-text-primary);
+  font-weight: 500;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+}
+
+.sql-tool__column-type {
+  color: var(--st-text-secondary);
+  font-size: 0.75rem;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  text-transform: uppercase;
+}
+
+/* Results Section */
+.sql-tool__result-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.875rem;
+  color: var(--st-text-secondary);
+}
+
+.sql-tool__execution-time {
+  background-color: var(--st-accent-info);
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--st-radius-sm);
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.sql-tool__row-count {
+  color: var(--st-text-muted);
+}
+
+.sql-tool__results-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.sql-tool__table-container {
+  border-radius: var(--st-radius-md);
+  overflow: hidden;
+  border: 1px solid var(--st-border-default);
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.sql-tool__results-table {
+  background-color: var(--st-bg-primary);
+  border-collapse: collapse;
+  color: var(--st-text-primary);
+  width: 100%;
+  margin: 0;
+}
+
+.sql-tool__results-table thead {
+  background-color: var(--st-bg-tertiary);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.sql-tool__results-table th {
+  border-bottom: 1px solid var(--st-border-default);
+  color: var(--st-text-primary);
+  font-weight: 600;
+  padding: 1rem;
+  text-align: left;
+}
+
+.sql-tool__results-table td {
+  border-bottom: 1px solid var(--st-border-muted);
+  padding: 1rem;
+  vertical-align: middle;
+}
+
+.sql-tool__results-table tbody tr:hover {
+  background-color: var(--st-bg-hover);
+}
+
+.sql-tool__results-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Query Info */
+.sql-tool__query-info {
+  background-color: var(--st-bg-primary);
+  border: 1px solid var(--st-border-default);
+  border-radius: var(--st-radius-md);
+  padding: 1rem;
+  color: var(--st-text-secondary);
+  font-size: 0.875rem;
+}
+
+.sql-tool__query-info.success {
+  border-color: var(--st-accent-success);
+  background-color: rgba(35, 134, 54, 0.05);
+}
+
+.sql-tool__query-info.error {
+  border-color: var(--st-accent-danger);
+  background-color: rgba(218, 54, 51, 0.05);
+  color: var(--st-accent-danger);
+}
+
+/* Footer Styles */
+.sql-tool__footer {
+  background-color: var(--st-bg-secondary);
+  border-top: 1px solid var(--st-border-default);
+  color: var(--st-text-secondary);
+  margin-top: auto;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .sql-tool__title {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+  
+  .sql-tool__icon {
+    font-size: 1.75rem;
+  }
+  
+  .sql-tool__main {
+    padding: 1rem 0;
+  }
+  
+  .sql-tool__card-body {
+    padding: 1rem;
+  }
+  
+  .sql-tool__quick-queries .btn-group {
+    flex-direction: column;
+  }
+  
+  .sql-tool__execute-section {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+  
+  .sql-tool__hint {
+    text-align: center;
+  }
+  
+  .sql-tool__table-container {
+    overflow-x: auto;
+  }
+  
+  .sql-tool__results-table {
+    min-width: 600px;
+  }
+}
+
+@media (max-width: 576px) {
+  .sql-tool__card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .sql-tool__result-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.sql-tool__card {
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.sql-tool__results-container {
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner-border {
+  animation: spin 0.75s linear infinite;
+}
+
+/* Notification System Animations */
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutToRight {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+/* Notification Styles */
+.sql-tool-notification {
+  animation: slideInFromRight 0.3s ease-out;
+  will-change: transform, top, opacity;
+}
+
+/* Notification hover effects */
+.sql-tool-notification:hover {
+  transform: translateX(-5px) !important;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Loading States */
+.sql-tool__loading {
+  position: relative;
+  overflow: hidden;
+}
+
+.sql-tool__loading::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(88, 166, 255, 0.2),
+    transparent
+  );
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* Syntax Highlighting Enhancement */
+.sql-tool__sql-editor.highlight {
+  background-color: var(--st-bg-primary);
+  color: var(--st-text-primary);
+}
+
+/* Print Styles */
+@media print {
+  .sql-tool__header,
+  .sql-tool__footer,
+  .sql-tool__execute-section {
+    display: none;
+  }
+  
+  body {
+    background-color: white;
+    color: black;
+  }
+  
+  .sql-tool__card {
+    border: 1px solid #ddd;
+    box-shadow: none;
+    background-color: white;
+    break-inside: avoid;
+  }
+  
+  .sql-tool__results-table {
+    background-color: white;
+    color: black;
+  }
+} 
